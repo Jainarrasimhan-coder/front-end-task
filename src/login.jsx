@@ -31,15 +31,13 @@ const Login = () => {
     if (response.status === 200) {
       console.log("response", response)
       localStorage.setItem("token", response.data.token)
-      localStorage.setItem("id", response.data.data._id)
-      window.alert("Welcome to your dashboard!!")
       dispatch({
           type: "USER_DETAIL",
           payload: response.data.data
       })
-      window.location.href="/dashboard"
+      window.location.href="/option"
     } else {
-      window.alert(`${response.data.message}`)
+      window.alert(`${response.data.error}`)
       console.log("errorresponse", response);
     }
   };

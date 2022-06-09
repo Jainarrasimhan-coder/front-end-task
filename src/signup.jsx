@@ -8,7 +8,7 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
-    phoneNumber: ''
+
   });
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ const Signup = () => {
   };
 
   const handleSignUp = async (e) => {
-    if(!state.email||!state.password||!state.password||!state.phoneNumber){
+    if(!state.email||!state.username||!state.password){
       window.alert("Please fill out all the fields")
       return
     }
@@ -26,8 +26,7 @@ const Signup = () => {
       const data = {
         name: state.username,
         email: state.email,
-        password: state.password,
-        phone_number: state.phoneNumber
+        password: state.password
       };
       console.log("data", data);
       const response = await signUp(data);
@@ -38,7 +37,7 @@ const Signup = () => {
             navigate('/login')
         }
     } catch(err){
-      window.alert(` ${err.data.message}`)
+      window.alert(` ${err.data.error}`)
 
       console.log("Error", err);
     }
@@ -81,16 +80,7 @@ const Signup = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Phone Number</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="PhoneNumber"
-            name="phoneNumber"
-            value={state.phoneNumber}
-            onChange={handleOnChange}
-          />
-        </Form.Group>
+      
 
         <Button variant="primary" type="submit">
           Submit

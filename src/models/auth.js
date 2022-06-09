@@ -13,7 +13,7 @@ export const signUp = async (data) => {
     // }
 
     return new Promise((resolve, reject)=>{
-        instance.post("/api/auth/sign_up", data).then((response)=>{
+        instance.post("/signup", data).then((response)=>{
             console.log("response", response)
             resolve(response.data)
         }).catch((err)=>{
@@ -24,7 +24,7 @@ export const signUp = async (data) => {
 }
 
 export const login = async (data) => {
-    const response = await instance.post("/api/auth/login", data).catch((err)=> err.response)
+    const response = await instance.post("/signin", data).catch((err)=> err.response)
     return response
 }
 
@@ -35,6 +35,16 @@ export const updateUser = async (data) => {
 
 export const getUser = async (data) => {
     const response = await instance.post("/api/auth/get", data).catch((err)=> err.response)
+    return response
+}
+
+export const getAllPosts = async () => {
+    const response = await instance.get("/allpost").catch((err)=> err.response)
+    return response
+}
+
+export const createPosts = async (data) => {
+    const response = await instance.post("/createpost", data).catch((err)=> err.response)
     return response
 }
 

@@ -1,15 +1,15 @@
-const USER_DETAIL = "USER_DETAIL"
+const GET_ALL_POSTS = "GET_ALL_POSTS";
 const CLEAR="CLEAR"
 const initialState = {
-  user: {}
+  post: {}
 };
 
 const TestReducer = (state = initialState, action) => {
     console.log("Action",action.type)
   switch (action.type) {
-    case USER_DETAIL:
+    case GET_ALL_POSTS:
       let newState = { ...state }
-      newState = { ...newState, user: action.payload }
+      newState = { ...newState, post: action.payload }
       return newState
       case CLEAR:
         return null
